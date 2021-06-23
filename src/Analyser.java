@@ -1,12 +1,16 @@
 import java.util.Scanner;
 
 public class Analyser {
-    public static void main(String[] args) {
+    public static void main(String[] args){
         int n;
         Scanner scanner = new Scanner(System.in);
         n = scanner.nextInt();
         Integer[] array = new Integer[n];
-        for (int i = 0; i < n; i++) array[i] = scanner.nextInt();
+        for (int i = 0; i < n; i++)
+            array[i] = scanner.nextInt();
+        scanner.close();
         Selection.sort(array);
+        for (int i = 0; i < n; i++)
+            System.out.print(array[i] + " ");
     }
 }
