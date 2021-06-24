@@ -8,7 +8,7 @@ public class Selection {
         int x = 0;
         for (int i = 0; i < array.length; i++) {
             for (int j = i; j < array.length; j++) {
-                if (!less(array[x], array[j])) x = j;
+                if (less(array[j], array[x])) x = j;
             }
             exchange(array, i, x);
             x = i + 1;
@@ -42,7 +42,7 @@ public class Selection {
         Integer[] array = new Integer[n];
         for (int i = 0; i < n; i++) array[i] = scanner.nextInt();
         Selection.sort(array);
-        assert isSorted(array);
+        assert !isSorted(array);
         for (int i = 0; i < n; i++) System.out.print(array[i] + " ");
     }
 }

@@ -9,6 +9,66 @@ import java.util.Random;
 // 2. run by passing 2 arguments - mode and number of items.
 // modes - random, sorted, revSorted, partSorted1, partSorted2
 public class generator {
+
+    public static Integer[] random(int n) {
+        Integer[] array = new Integer[n];
+
+        Random random = new Random();
+        for (int i = 1; i <= n; i++) {
+            array[i] = random.nextInt(n);
+        }
+
+        return array;
+    }
+
+    public static Integer[] sorted(int n) {
+        Integer[] array = new Integer[n];
+
+        Random random = new Random();
+        for (int i = 1; i <= n; i++) {
+            array[i] = 5 * i + random.nextInt(5);
+        }
+
+        return array;
+    }
+
+    public static Integer[] revSorted(int n) {
+        Integer[] array = new Integer[n];
+
+        Random random = new Random();
+        for (int i = 1; i <= n; i++) {
+            array[i] = (n - i) * 5 + random.nextInt(5);
+        }
+
+        return array;
+    }
+
+    public static Integer[] partSorted1(int n) {
+        Integer[] array = new Integer[n];
+
+        Random random = new Random();
+        for (int i = 1; i <= n; i++) {
+            array[i] = i + random.nextInt(5);
+        }
+
+        return array;
+    }
+
+    public static Integer[] partSorted2(int n) {
+        Integer[] array = new Integer[n];
+
+        Random random = new Random();
+        int i = 1;
+        for (; i <= 3 * n / 4; i++) {
+            array[i] = 5 * i + random.nextInt(5);
+        }
+        for (; i <= n; i++) {
+            array[i] = random.nextInt(n);
+        }
+
+        return array;
+    }
+
     public static void main(String[] args) throws FileNotFoundException {
         PrintStream fileStream = new PrintStream(new File(args[2]));
         String mode = args[0];
