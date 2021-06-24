@@ -15,7 +15,7 @@ public class generator {
 
         Random random = new Random();
         for (int i = 1; i <= n; i++) {
-            array[i] = random.nextInt(n);
+            array[i-1] = random.nextInt(n);
         }
 
         return array;
@@ -26,7 +26,7 @@ public class generator {
 
         Random random = new Random();
         for (int i = 1; i <= n; i++) {
-            array[i] = 5 * i + random.nextInt(5);
+            array[i-1] = 5 * i + random.nextInt(5);
         }
 
         return array;
@@ -37,7 +37,7 @@ public class generator {
 
         Random random = new Random();
         for (int i = 1; i <= n; i++) {
-            array[i] = (n - i) * 5 + random.nextInt(5);
+            array[i-1] = (n - i) * 5 + random.nextInt(5);
         }
 
         return array;
@@ -48,7 +48,7 @@ public class generator {
 
         Random random = new Random();
         for (int i = 1; i <= n; i++) {
-            array[i] = i + random.nextInt(5);
+            array[i-1] = i + random.nextInt(5);
         }
 
         return array;
@@ -60,10 +60,10 @@ public class generator {
         Random random = new Random();
         int i = 1;
         for (; i <= 3 * n / 4; i++) {
-            array[i] = 5 * i + random.nextInt(5);
+            array[i-1] = 5 * i + random.nextInt(5);
         }
         for (; i <= n; i++) {
-            array[i] = random.nextInt(n);
+            array[i-1] = random.nextInt(n);
         }
 
         return array;
