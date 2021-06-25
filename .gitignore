@@ -1,5 +1,7 @@
 .idea
 .vscode
 out
+Plots
+output
 Tests/generator.class
 Sorting Algorithms Analysis.iml

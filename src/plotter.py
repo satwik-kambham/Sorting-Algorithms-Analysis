@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
 
-file = open("..\output.txt")
+file = open("output.txt")
 
+mode = file.readline()
 n = int(file.readline())
 testLength = list(map(int, file.readline().split()))
 random = list(map(int, file.readline().split()))
@@ -12,7 +13,7 @@ partSorted2 = list(map(int, file.readline().split()))
 
 file.close()
 
-plt.title('Selection sort')
+plt.title(mode)
 plt.xlabel('number of items to be sorted')
 plt.ylabel('time in milliseconds')
 

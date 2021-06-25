@@ -1,11 +1,13 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
 
 public class Analyser {
+    private static String mode = "Selection";
+
     public static void writeToCSV(Integer[][] data, Integer[] testLengths) throws IOException {
         FileWriter fileWriter = new FileWriter(new File("output.txt"));
+        fileWriter.write(mode + System.getProperty("line.separator"));
         fileWriter.write(data[0].length + System.getProperty("line.separator"));
         for (int i = 0; i < testLengths.length; i++) {
             fileWriter.write(testLengths[i] + " ");
@@ -20,8 +22,20 @@ public class Analyser {
         fileWriter.flush();
     }
 
+    private static void sort(Integer[] array) {
+        if (mode == "Selection")
+            Selection.sort(array);
+        else if (mode == "Insertion")
+            Insertion.sort(array);
+        else if (mode == "InsertionImp")
+            InsertionImp.sort(array);
+        else 
+            Selection.sort(array);
+    }
+
     public static void main(String[] args) throws IOException {
-        int n = 20;
+        mode = args[0];
+        int n = 50;
         Integer[] testLengths = new Integer[] { 10, 100, 1000, 2500, 5000, 7500, 10000 };
         Integer[][][] measurements = new Integer[5][testLengths.length][n];
         Integer[][] finalMeasurements = new Integer[5][testLengths.length];
@@ -34,10 +48,8 @@ public class Analyser {
         Integer[] array;
         Integer time;
 
-        Scanner scanner = new Scanner(System.in);
-
         time = (int) System.currentTimeMillis();
-        n = scanner.nextInt();
+
         time = (int) System.currentTimeMillis() - time;
         System.out.println(time);
 
@@ -45,27 +57,27 @@ public class Analyser {
             for (int j = 0; j < n; j++) {
                 array = generator.random(testLengths[i]);
                 time = (int) System.currentTimeMillis();
-                Selection.sort(array);
+                sort(array);
                 measurements[0][i][j] = (int) System.currentTimeMillis() - time;
 
                 array = generator.sorted(testLengths[i]);
                 time = (int) System.currentTimeMillis();
-                Selection.sort(array);
+                sort(array);
                 measurements[1][i][j] = (int) System.currentTimeMillis() - time;
 
                 array = generator.revSorted(testLengths[i]);
                 time = (int) System.currentTimeMillis();
-                Selection.sort(array);
+                sort(array);
                 measurements[2][i][j] = (int) System.currentTimeMillis() - time;
 
                 array = generator.partSorted1(testLengths[i]);
                 time = (int) System.currentTimeMillis();
-                Selection.sort(array);
+                sort(array);
                 measurements[3][i][j] = (int) System.currentTimeMillis() - time;
 
                 array = generator.partSorted2(testLengths[i]);
                 time = (int) System.currentTimeMillis();
-                Selection.sort(array);
+                sort(array);
                 measurements[4][i][j] = (int) System.currentTimeMillis() - time;
             }
             for (int y = 0; y < 5; y++) {

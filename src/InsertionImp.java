@@ -1,19 +1,32 @@
 import java.util.Scanner;
 
-// Selection Sort Implementation
-public class Selection {
+public class InsertionImp {
     // Implementation of sorting algorithm
     public static void sort(Comparable[] array) {
         if (array.length == 0)
             return;
-        int x = 0;
-        for (int i = 0; i < array.length; i++) {
-            for (int j = i; j < array.length; j++) {
-                if (less(array[j], array[x]))
-                    x = j;
+        int n = array.length;
+
+        // put smallest element in position to serve as sentinel
+        int exchanges = 0;
+        for (int i = n - 1; i > 0; i--) {
+            if (less(array[i], array[i - 1])) {
+                exchange(array, i, i - 1);
+                exchanges++;
             }
-            exchange(array, i, x);
-            x = i + 1;
+        }
+        if (exchanges == 0)
+            return;
+
+        // insertion sort with half-exchanges
+        for (int i = 2; i < n; i++) {
+            Comparable v = array[i];
+            int j = i;
+            while (less(v, array[j - 1])) {
+                array[j] = array[j - 1];
+                j--;
+            }
+            array[j] = v;
         }
     }
 
@@ -46,7 +59,7 @@ public class Selection {
         for (int i = 0; i < n; i++)
             array[i] = scanner.nextInt();
         scanner.close();
-        Selection.sort(array);
+        Insertion.sort(array);
         assert !isSorted(array);
         for (int i = 0; i < n; i++)
             System.out.print(array[i] + " ");
