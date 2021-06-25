@@ -1,9 +1,9 @@
 import matplotlib.pyplot as plt
 
-file = open("output.txt")
+file = open('output.txt')
 
-mode = file.readline()
-n = int(file.readline())
+mode, n = file.readline().split()
+n = int(n)
 testLength = list(map(int, file.readline().split()))
 random = list(map(int, file.readline().split()))
 sorted = list(map(int, file.readline().split()))
@@ -23,4 +23,8 @@ plt.plot(testLength, revSorted, label='reverse sorted')
 plt.plot(testLength, partSorted1, label='partially sorted 1')
 plt.plot(testLength, partSorted2, label='partially sorted 2')
 plt.legend()
-plt.show()
+
+path = 'Plots/' + mode + '.png'
+print('Saving plot to' , path)
+
+plt.savefig(path)

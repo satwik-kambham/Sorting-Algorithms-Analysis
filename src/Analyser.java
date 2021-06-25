@@ -3,11 +3,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Analyser {
-    private static String mode = "Selection";
+    private static String mode;
 
     public static void writeToCSV(Integer[][] data, Integer[] testLengths) throws IOException {
         FileWriter fileWriter = new FileWriter(new File("output.txt"));
-        fileWriter.write(mode + System.getProperty("line.separator"));
+        fileWriter.write(mode + " ");
         fileWriter.write(data[0].length + System.getProperty("line.separator"));
         for (int i = 0; i < testLengths.length; i++) {
             fileWriter.write(testLengths[i] + " ");
@@ -23,14 +23,12 @@ public class Analyser {
     }
 
     private static void sort(Integer[] array) {
-        if (mode == "Selection")
+        if (mode.equals("Selection"))
             Selection.sort(array);
-        else if (mode == "Insertion")
+        else if (mode.equals("Insertion"))
             Insertion.sort(array);
-        else if (mode == "InsertionImp")
-            InsertionImp.sort(array);
-        else 
-            Selection.sort(array);
+        else if (mode.equals("InsertionImp"))
+            Insertion.sort(array);
     }
 
     public static void main(String[] args) throws IOException {
@@ -47,11 +45,6 @@ public class Analyser {
 
         Integer[] array;
         Integer time;
-
-        time = (int) System.currentTimeMillis();
-
-        time = (int) System.currentTimeMillis() - time;
-        System.out.println(time);
 
         for (int i = 0; i < testLengths.length; i++) {
             for (int j = 0; j < n; j++) {
