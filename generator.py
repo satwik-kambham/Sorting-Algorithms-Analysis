@@ -12,3 +12,6 @@ os.system('py ./src/plotter.py')
 
 os.system('java -cp ./output Analyser InsertionImp')
 os.system('py ./src/plotter.py')
+
+os.system('java -cp ./output Analyser Merge')
+os.system('py ./src/plotter.py')
