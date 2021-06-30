@@ -59,7 +59,7 @@ public class InsertionImp {
         for (int i = 0; i < n; i++)
             array[i] = scanner.nextInt();
         scanner.close();
-        Insertion.sort(array);
+        InsertionImp.sort(array);
         assert !isSorted(array);
         for (int i = 0; i < n; i++)
             System.out.print(array[i] + " ");

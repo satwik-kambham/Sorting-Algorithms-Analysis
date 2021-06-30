@@ -29,15 +29,25 @@ public class Analyser {
             Insertion.sort(array);
         else if (mode.equals("InsertionImp"))
             InsertionImp.sort(array);
+        else if (mode.equals("Shell"))
+            Shell.sort(array);
         else if (mode.equals("Merge"))
             Merge.sort(array);
+        else if (mode.equals("Quick"))
+            Quick.sort(array);
     }
 
     public static void main(String[] args) throws IOException {
         mode = args[0];
         int n = 50;
-        //TODO add an option to change the number of test length
-        Integer[] testLengths = new Integer[] { 10, 100, 1000, 2500, 5000, 7500, 10000 };
+        Integer[] testLengths;
+
+        if (mode.equals("Merge") || mode.equals("Quick")) {
+            testLengths = new Integer[] { 10, 100, 1000, 2500, 5000, 7500, 10000, 100000, 1000000 };
+        } else {
+            testLengths = new Integer[] { 10, 100, 1000, 2500, 5000, 7500, 10000 };
+        }
+
         Integer[][][] measurements = new Integer[5][testLengths.length][n];
         Integer[][] finalMeasurements = new Integer[5][testLengths.length];
         for (int i = 0; i < 5; i++) {

@@ -17,6 +17,7 @@ plt.title(mode)
 plt.xlabel('number of items to be sorted')
 plt.ylabel('time in milliseconds')
 
+plt.autoscale(True);
 plt.plot(testLength, random, label='random')
 plt.plot(testLength, sorted, label='sorted')
 plt.plot(testLength, revSorted, label='reverse sorted')
