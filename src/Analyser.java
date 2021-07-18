@@ -25,6 +25,8 @@ public class Analyser {
     private static void sort(Integer[] array) {
         if (mode.equals("Selection"))
             Selection.sort(array);
+        else if (mode.equals("Bubble"))
+            Bubble.sort(array);
         else if (mode.equals("Insertion"))
             Insertion.sort(array);
         else if (mode.equals("InsertionImp"))

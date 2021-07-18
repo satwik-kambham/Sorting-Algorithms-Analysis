@@ -1,56 +1,44 @@
 import java.util.Scanner;
-// TODO something wrong
+
 public class Shell {
-    // Implementation of sorting algorithm
+    // method to sort the array
     public static void sort(Comparable[] array) {
-        if (array.length == 0)
-            return;
-
+        // h = 3n+1 = 1, 4, 7, 10, 13...
         int h = 1;
-        while (h < array.length / 3)
-            h = 3 * h - 1;
-
-        while (h >= 1) {
-            for (int i = h; i < array.length; i++) {
-                for (int j = i; j > h && less(array[j], array[j - h]); j -= h)
-                    exchange(array, j, j - h);
+        for (int n = array.length / 3; n >= 0; n--) {
+            h = 3 * n + 1;
+            for (int i = 1; i <= array.length - h; i += h) {
+                while (i > 0 && array[i].compareTo(array[i - 1]) < 0) {
+                    swap(array, i, i - 1);
+                    i--;
+                }
             }
-            h /= 3;
         }
     }
 
-    // Checks whether the first argument is less than the second
-    private static boolean less(Comparable a, Comparable b) {
-        return a.compareTo(b) < 0;
-    }
-
-    // Exchanges two elements of the given array
-    private static void exchange(Comparable[] array, int i, int j) {
-        Comparable x = array[i];
+    // method to swap two elements in an array
+    private static void swap(Comparable[] array, int i, int j) {
+        Comparable object = array[i];
         array[i] = array[j];
-        array[j] = x;
+        array[j] = object;
     }
 
-    // Checks whether the sort was successful
-    public static boolean isSorted(Comparable[] array) {
-        for (int i = 1; i < array.length; i++)
-            if (less(array[i], array[i - 1]))
-                return false;
-        return true;
-    }
-
-    // Main method for testing the algorithm
     public static void main(String[] args) {
+        // Taking input that needs to be sorted
         Scanner scanner = new Scanner(System.in);
-        int n = 0;
-        n = scanner.nextInt();
+        int n = scanner.nextInt();
         Integer[] array = new Integer[n];
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++) {
             array[i] = scanner.nextInt();
+        }
         scanner.close();
-        Shell.sort(array);
-        assert !isSorted(array);
-        for (int i = 0; i < n; i++)
+
+        // calling the sort method
+        sort(array);
+
+        // displaying the resultant array
+        for (int i = 0; i < n; i++) {
             System.out.print(array[i] + " ");
+        }
     }
 }

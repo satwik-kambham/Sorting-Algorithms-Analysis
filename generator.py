@@ -1,23 +1,12 @@
 import os
 
+sorts = ["Bubble", "Selection", "Insertion", "InsertionImp", "Shell", "Merge", "Quick"]
+
 os.system('mkdir output')
 os.system('mkdir Plots')
 os.system('javac ./src/*.java -d ./output')
 
-os.system('java -cp ./output Analyser Selection')
-os.system('py ./src/plotter.py')
+for sort in sorts:
+    os.system('java -cp ./output Analyser ' + sort)
+    os.system('py ./src/plotter.py')
 
-os.system('java -cp ./output Analyser Insertion')
-os.system('py ./src/plotter.py')
-
-os.system('java -cp ./output Analyser InsertionImp')
-os.system('py ./src/plotter.py')
-
-os.system('java -cp ./output Analyser Shell')
-os.system('py ./src/plotter.py')
-
-os.system('java -cp ./output Analyser Merge')
-os.system('py ./src/plotter.py')
-
-os.system('java -cp ./output Analyser Quick')
-os.system('py ./src/plotter.py')
