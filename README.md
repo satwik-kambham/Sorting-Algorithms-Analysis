@@ -22,3 +22,5 @@ The program works as follows:
 - Everytime Analyser.java is run for a sorting algorithm, it runs the sorting algorithms on auto-generated integer arrays and records the runtime.
 - The runtimes are recorded in the output.txt file.
 - The output.txt file is read by plotter.py which takes the runtimes and plots them on a graph using the matplotlib library.
+
+More info can be found in the related blog post: https://satwikkambham.blogspot.com/2021/07/analysis-of-sorting-algorithms.html
